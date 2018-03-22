@@ -1,7 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {MatButtonModule, MatCheckboxModule} from '@angular/material';
+import {MatButtonModule, MatCheckboxModule, MatInputModule} from '@angular/material';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -31,7 +33,7 @@ import { AllComponent } from './all/all.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    [MatButtonModule, MatCheckboxModule, MatToolbarModule]
+    [MatButtonModule, MatCheckboxModule, MatToolbarModule, MatFormFieldModule, MatInputModule, BrowserAnimationsModule]
   ],
   providers: [],
   bootstrap: [AppComponent]

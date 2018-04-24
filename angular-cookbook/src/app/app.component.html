@@ -1,17 +1,11 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-</div>
-
 <mat-toolbar>
-  <span>COOK BOOK </span>
-  <button mat-button routerLink="all-recipes" routerLinkActive="active-menu">All Recipes</button>
-  <button mat-button routerLink="add-recipe" routerLinkActive="active-menu">Add Recipe</button>
-  <button mat-button routerLink="login" routerLinkActive="active-menu">Login</button>
+  <span>LOGO</span>
+  <button mat-button routerLink="pieces" >Pieces</button>
+  <button mat-button routerLink="creatives" >Creatives</button>
+  <button mat-button routerLink="about" >About</button>
+  <button mat-button routerLink="login" *ngIf="!authService.isLoggedIn">Sign In </button>
+  <button mat-button routerLink="signup" *ngIf="!authService.isLoggedIn">Sign Up </button>
+  <button mat-button routerLink="" *ngIf="authService.isLoggedIn" (click)="authService.logout()">Sign Out</button>
 </mat-toolbar>
-
-
 
 <router-outlet></router-outlet>

@@ -1,3 +1,55 @@
-<p>
-  sign-up works!
-</p>
+<form novalidate [formGroup]="registerForm" (submit)="signUpSubmit(registerForm)" novalidate>
+  <h1>Sign Up</h1>
+    <div class="example-container">
+        <mat-form-field>
+          <input matInput type="text" formControlName="firstname" placeholder="First name">
+        </mat-form-field>
+        <div *ngIf="registerForm.controls.firstname.errors?.required && registerForm.controls.firstname.touched">
+          You must fill out your name
+        </div>
+        <mat-form-field>
+          <input matInput type="text" formControlName="lastname" placeholder="Last name">
+        </mat-form-field>
+        <div *ngIf="registerForm.controls.lastname.errors?.required && registerForm.controls.lastname.touched">
+          You must fill out your name
+        </div>
+        <mat-form-field>
+          <input matInput type="text" formControlName="profession" placeholder="Profession">
+        </mat-form-field>
+        <div *ngIf="registerForm.controls.profession.errors?.required && registerForm.controls.profession.touched">
+          You must fill out your name
+        </div>
+        <mat-form-field>
+          <input matInput type="text" formControlName="location" placeholder="Location">
+        </mat-form-field>
+        <div *ngIf="registerForm.controls.location.errors?.required && registerForm.controls.location.touched">
+          You must fill out your name
+        </div>
+        <mat-form-field>
+          <input matInput type="text" formControlName="description" placeholder="Profile description...">
+        </mat-form-field>
+        <div *ngIf="registerForm.controls.description.errors?.required && registerForm.controls.description.touched">
+          You must fill out your name
+        </div>
+        <mat-form-field>
+          <input matInput type="text" formControlName="email" placeholder="E-mail">
+        </mat-form-field>
+        <div *ngIf="registerForm.controls.email.errors?.required && registerForm.controls.email.touched">
+          You must fill out your name
+        </div>
+        <mat-form-field>
+          <input matInput type="text" formControlName="password" placeholder="Password">
+        </mat-form-field>
+        <div *ngIf="registerForm.controls.password.errors?.required && registerForm.controls.password.touched">
+          You must fill out your name
+        </div>
+        <input type='file' (change)="readUrl($event)">
+        <img [src]="profileImageUrl">
+    </div>
+  
+  <button mat-button type="submit">Create user</button>
+
+    <p>Form value: {{ registerForm.value | json }}</p>
+    <p>Form status: {{ registerForm.status | json }}</p>
+
+</form>

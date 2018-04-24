@@ -20,7 +20,7 @@ import { CreativesComponent } from './creatives/creatives.component';
 import { AboutComponent } from './about/about.component';
 import { MyPiecesComponent } from './admin/my-pieces/my-pieces.component';
 import { AdmitPieceComponent } from './admin/admit-piece/admit-piece.component';
-import { SignOutComponent } from './sign-out/sign-out.component';
+import { SignOutComponent } from './admin/sign-out/sign-out.component';
 import { ServiceChatComponent } from './admin/service-chat/service-chat.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 

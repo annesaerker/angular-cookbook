@@ -26,7 +26,7 @@ export class AuthGuardService implements CanActivate {
     this.authService.redirectUrl = url;
 
     // Navigate to the login page with extras
-    this.router.navigate(['/admin/my-profile']);
+    this.router.navigate(['login']);
     return false;
   }
 

@@ -33,19 +33,33 @@ app.use((req, res, next) => {
     next()
 })
 
-app.get('/messages', (req, res) => {
+// create router with express that will let us seperate and orginaize our differnt routes
+// We will make one router for our general purpous web api routes and later another one for authentication specific routes
+// new router
+var api = express.Router();
+
+api.get('/messages', (req, res) => {
     // res.send('hello')
     res.json(messages)
 })
 
-app.post('/message', (req, res) => {
+api.post('/messages', (req, res) => {
     // res.send('hello')
     // console.log(req.body)
     // res.json(messages)
+
+    // push message to body in service chat c
     messages.push(req.body)
     // status ok
-    res.sendStatus(200);
+    // res.sendStatus(200);
+    res.json(req.body);
 })
+
+// tell express to use our new router
+// creates base route for the first property. 
+//So in order to acces our routes now, we have to start with /api/...
+app.use('/api', api)
+
 
 
 

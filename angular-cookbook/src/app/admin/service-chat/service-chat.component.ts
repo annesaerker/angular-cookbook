@@ -16,10 +16,17 @@ export class ServiceChatComponent implements OnInit {
     // console.log(response.json());
     // display message list from backend since its no longer definded locally
     // placeing console.log(response.json()); 
-    this.messages = response.json();
+    // this.messages = response.json();
+  }
+
+  message = {
+    owner: "",
+    text: ""
   }
   
-  // emty message list
-  messages = [];
+  post() {
+    console.log(this.message);
+    this.chatService.postMessage(this.message);
+  }
 
 }

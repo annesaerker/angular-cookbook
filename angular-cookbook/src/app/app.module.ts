@@ -6,6 +6,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatSelectModule} from '@angular/material/select';
 import { HttpModule } from '@angular/http';
+import {MatCardModule} from '@angular/material/card';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -57,7 +58,8 @@ import { ChatService } from './chat.service';
     ReactiveFormsModule,
     FormsModule,
     MatSelectModule,
-    HttpModule
+    HttpModule,
+    MatCardModule
   ],
   providers: [AuthGuardService, AuthService, ChatService],
   bootstrap: [AppComponent]

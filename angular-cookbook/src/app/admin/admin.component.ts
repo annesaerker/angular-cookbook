@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
+import { ServiceChatComponent } from './service-chat/service-chat.component';
 
 
 
@@ -9,6 +10,8 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./admin.component.scss']
 })
 export class AdminComponent implements OnInit {
+
+
 
   constructor( private authService: AuthService) { }
 

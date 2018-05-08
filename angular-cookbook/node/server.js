@@ -1,6 +1,7 @@
 var mysql = require('mysql')
 var express = require('express')
 var app = express()
+var bodyParser = require('body-parser')
 // var express// formidable
 
 
@@ -17,14 +18,15 @@ db.connect( err => {
     console.log('CONNECTED')
 })
 
-var stmt = "SELECT * FROM users"
+// var stmt = "SELECT * FROM users"
 
-db.query( stmt , ( err , ajData ) =>{
-    console.log("ajData", ajData)
-})
+// db.query( stmt , ( err , ajData ) =>{
+//     console.log("ajData", ajData)
+// })
 
 var messages = [{text:'Whats up?', owner: 'Katrin'},{text:'Not much!', owner: 'Birna'}];
 
+app.use(bodyParser.json());
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*")
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
@@ -34,6 +36,15 @@ app.use((req, res, next) => {
 app.get('/messages', (req, res) => {
     // res.send('hello')
     res.json(messages)
+})
+
+app.post('/message', (req, res) => {
+    // res.send('hello')
+    // console.log(req.body)
+    // res.json(messages)
+    messages.push(req.body)
+    // status ok
+    res.sendStatus(200);
 })
 
 

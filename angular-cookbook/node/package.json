@@ -1,7 +1,8 @@
 {
     "dependencies": {
-        "mysql": "2.15.0",
+        "body-parser": "^1.18.2",
         "express": "4.16.3",
-        "express-formidable": "1.0.0"
+        "express-formidable": "1.0.0",
+        "mysql": "2.15.0"
     }
 }

@@ -5,6 +5,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatSelectModule} from '@angular/material/select';
+import { HttpModule } from '@angular/http';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -24,6 +25,9 @@ import { AdmitPieceComponent } from './admin/admit-piece/admit-piece.component';
 import { SignOutComponent } from './admin/sign-out/sign-out.component';
 import { ServiceChatComponent } from './admin/service-chat/service-chat.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { ChatService } from './chat.service';
+
+
 
 
 @NgModule({
@@ -52,9 +56,10 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     BrowserAnimationsModule,
     ReactiveFormsModule,
     FormsModule,
-    MatSelectModule
+    MatSelectModule,
+    HttpModule
   ],
-  providers: [AuthGuardService, AuthService],
+  providers: [AuthGuardService, AuthService, ChatService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

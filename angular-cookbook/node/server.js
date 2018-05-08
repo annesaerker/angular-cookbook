@@ -1,6 +1,7 @@
 var mysql = require('mysql')
+var express = require('express')
+var app = express()
 // var express// formidable
-//express
 
 
 var db = mysql.createConnection({
@@ -21,6 +22,22 @@ var stmt = "SELECT * FROM users"
 db.query( stmt , ( err , ajData ) =>{
     console.log("ajData", ajData)
 })
+
+var messages = [{text:'How are you?', owner: 'Katrin'},{text:'I am great!', owner: 'Birna'}];
+
+app.use((req, res, next) => {
+    res.header("Asses-Control-Allow-Origin", "*")
+    res.header("Asses-Control-Allow-Headers", "Origin, x-Requested-With, Content-Type, Accept")
+    next()
+})
+
+app.get('/messages', (req, res) => {
+    // res.send('hello')
+    res.json(messages)
+})
+
+
+
 
 // app.post("/save-user", (req, res) => { 
 //     console.log(req.fields)
@@ -53,6 +70,12 @@ db.query( stmt , ( err , ajData ) =>{
 //     //uData {"fieldCount":0,"affectedRows":1,"insertId":7,"serverStatus":2,"warningCount":0,"message":"","protocol41":true,"changedRows":0}
 // })
 
-// listening to port
-//port somthing
-// app.listen(port
+//Listening to port
+var port = 1982
+app.listen(port, err => {
+    if(err) {
+        console.log("error");
+        return
+    }
+    console.log("server is running on port 1982");
+})

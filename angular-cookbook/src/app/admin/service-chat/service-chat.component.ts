@@ -10,11 +10,16 @@ export class ServiceChatComponent implements OnInit {
 
   constructor(private chatService: ChatService) { }
 
-  messages = [{text:'How are you?', owner: 'Katrin'},{text:'I am great!', owner: 'Birna'}];
 
-  ngOnInit() {
-    this.chatService.getMessages();
-
+  async ngOnInit() {
+    var response = await this.chatService.getMessages();
+    // console.log(response.json());
+    // display message list from backend since its no longer definded locally
+    // placeing console.log(response.json()); 
+    this.messages = response.json();
   }
+  
+  // emty message list
+  messages = [];
 
 }

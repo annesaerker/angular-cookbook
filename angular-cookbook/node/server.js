@@ -23,11 +23,11 @@ db.query( stmt , ( err , ajData ) =>{
     console.log("ajData", ajData)
 })
 
-var messages = [{text:'How are you?', owner: 'Katrin'},{text:'I am great!', owner: 'Birna'}];
+var messages = [{text:'Whats up?', owner: 'Katrin'},{text:'Not much!', owner: 'Birna'}];
 
 app.use((req, res, next) => {
-    res.header("Asses-Control-Allow-Origin", "*")
-    res.header("Asses-Control-Allow-Headers", "Origin, x-Requested-With, Content-Type, Accept")
+    res.header("Access-Control-Allow-Origin", "*")
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
     next()
 })
 

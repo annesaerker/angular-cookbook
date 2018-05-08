@@ -49,11 +49,16 @@ export class SignUpComponent implements OnInit {
     this.registerForm = this.fb.group({
       firstname: ['', Validators.required],
       lastname: ['', Validators.required],
-      profession: ['', Validators.required],
-      location: ['', Validators.required],
-      description: ['', Validators.required],
       email: ['', Validators.required],
-      password: ['', Validators.required]
+      password: ['', Validators.required],
+      country: ['', Validators.required],
+      phonenumber: ['', Validators.required],
+      facebookurl: ['', ],
+      instagramurl: ['', ],
+      twitterurl: ['', ],
+      profession: ['', Validators.required],
+      description: ['', Validators.required]
+
     });
   }
 

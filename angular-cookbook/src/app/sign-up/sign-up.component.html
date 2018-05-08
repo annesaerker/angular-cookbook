@@ -1,48 +1,81 @@
 <form novalidate [formGroup]="registerForm" (submit)="signUpSubmit(registerForm)" novalidate>
   <h1>Sign Up</h1>
     <div class="example-container">
+
         <mat-form-field>
           <input matInput type="text" formControlName="firstname" placeholder="First name">
         </mat-form-field>
         <div *ngIf="registerForm.controls.firstname.errors?.required && registerForm.controls.firstname.touched">
-          You must fill out your name
+          You must fill out your firstname
         </div>
+
         <mat-form-field>
           <input matInput type="text" formControlName="lastname" placeholder="Last name">
         </mat-form-field>
         <div *ngIf="registerForm.controls.lastname.errors?.required && registerForm.controls.lastname.touched">
-          You must fill out your name
+          You must fill out your lastname
         </div>
-        <mat-form-field>
-          <input matInput type="text" formControlName="profession" placeholder="Profession">
-        </mat-form-field>
-        <div *ngIf="registerForm.controls.profession.errors?.required && registerForm.controls.profession.touched">
-          You must fill out your name
-        </div>
-        <mat-form-field>
-          <input matInput type="text" formControlName="location" placeholder="Location">
-        </mat-form-field>
-        <div *ngIf="registerForm.controls.location.errors?.required && registerForm.controls.location.touched">
-          You must fill out your name
-        </div>
-        <mat-form-field>
-          <input matInput type="text" formControlName="description" placeholder="Profile description...">
-        </mat-form-field>
-        <div *ngIf="registerForm.controls.description.errors?.required && registerForm.controls.description.touched">
-          You must fill out your name
-        </div>
+
         <mat-form-field>
           <input matInput type="text" formControlName="email" placeholder="E-mail">
         </mat-form-field>
         <div *ngIf="registerForm.controls.email.errors?.required && registerForm.controls.email.touched">
-          You must fill out your name
+          You must fill out your email
         </div>
+
         <mat-form-field>
           <input matInput type="text" formControlName="password" placeholder="Password">
         </mat-form-field>
         <div *ngIf="registerForm.controls.password.errors?.required && registerForm.controls.password.touched">
-          You must fill out your name
+          You must fill out your password
         </div>
+
+        <mat-form-field>
+          <mat-select formControlName="country" placeholder="Country">
+            <mat-option value="option">
+            <!-- <mat-option *ngFor="let food of foods" [value]="food.value">
+              {{ food.viewValue }} -->
+              Denmark
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div *ngIf="registerForm.controls.country.errors?.required && registerForm.controls.country.touched">
+          You must fill out your country
+        </div>
+
+        <mat-form-field>
+          <input matInput type="text" formControlName="phonenumber" placeholder="Phone number">
+        </mat-form-field>
+        <div *ngIf="registerForm.controls.phonenumber.errors?.required && registerForm.controls.phonenumber.touched">
+          You must fill out your phonenumber
+        </div>
+
+        <mat-form-field>
+          <input matInput type="text" formControlName="facebookurl" placeholder="Facebook url">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput type="text" formControlName="instagramurl" placeholder="Instagram url">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput type="text" formControlName="twitterurl" placeholder="Twitter url">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput type="text" formControlName="profession" placeholder="Profession">
+        </mat-form-field>
+        <div *ngIf="registerForm.controls.profession.errors?.required && registerForm.controls.profession.touched">
+          You must fill out your profession
+        </div>
+
+        <mat-form-field>
+          <input matInput type="text" formControlName="description" placeholder="Profile description...">
+        </mat-form-field>
+        <div *ngIf="registerForm.controls.description.errors?.required && registerForm.controls.description.touched">
+          You must fill out your description
+        </div>
+
         <input type='file' (change)="readUrl($event)">
         <img [src]="profileImageUrl">
     </div>

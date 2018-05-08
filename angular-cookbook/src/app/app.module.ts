@@ -4,6 +4,7 @@ import {MatButtonModule, MatCheckboxModule, MatInputModule} from '@angular/mater
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatSelectModule} from '@angular/material/select';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -50,7 +51,8 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     MatInputModule, 
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    MatSelectModule
   ],
   providers: [AuthGuardService, AuthService],
   bootstrap: [AppComponent]

@@ -12,8 +12,11 @@ import { AboutComponent } from './about/about.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { AuthGuardService } from './auth-guard.service';
 import { ServiceChatComponent } from './admin/service-chat/service-chat.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: 'home',  pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
   { path: 'pieces', component: PiecesComponent },
   { path: 'creatives', component: CreativesComponent },
   { path: 'about', component: AboutComponent },

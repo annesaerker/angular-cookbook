@@ -1,12 +1,16 @@
 <mat-toolbar>
-  <span>LOGO</span>
-  <button mat-button routerLink="pieces" >Pieces</button>
-  <button mat-button routerLink="creatives" >Creatives</button>
-  <button mat-button routerLink="about" >About</button>
-  <button mat-button routerLink="login" *ngIf="!authService.isLoggedIn">Sign In </button>
-  <button mat-button routerLink="sign-up" *ngIf="!authService.isLoggedIn">Sign Up </button>
+  <div class="logo">
+    <div class="btnLogo" routerLink="home" ><img src="../assets/logo/logo.svg"></div>   
+  </div>
+  <button mat-button class="btnNone" routerLink="pieces" >Pieces</button>
+  <button mat-button class="btnNone" routerLink="creatives" >Creatives</button>
+  <button mat-button class="btnNone" routerLink="about" >About</button>
+  <button mat-button class="btnNone lineLeft" routerLink="about"><img src="../assets/icon/basket-ico.svg"></button>
+  <button mat-button class="btnLight"  routerLink="login" *ngIf="!authService.isLoggedIn">Sign In </button>
+  <button mat-button class="btnDark" routerLink="sign-up" *ngIf="!authService.isLoggedIn">Sign Up </button>
   <button mat-button routerLink="admin" *ngIf="authService.isLoggedIn">Welcome User</button>
-
 </mat-toolbar>
 
 <router-outlet></router-outlet>
+
+<app-footer></app-footer>

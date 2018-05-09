@@ -27,6 +27,8 @@ import { SignOutComponent } from './admin/sign-out/sign-out.component';
 import { ServiceChatComponent } from './admin/service-chat/service-chat.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { ChatService } from './chat.service';
+import { HomeComponent } from './home/home.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 
@@ -44,7 +46,9 @@ import { ChatService } from './chat.service';
     AdmitPieceComponent,
     SignOutComponent,
     ServiceChatComponent,
-    SignUpComponent
+    SignUpComponent,
+    HomeComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

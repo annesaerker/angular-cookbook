@@ -1,0 +1,29 @@
+<form [formGroup]="loginForm" (submit)="onSubmit(loginForm)" novalidate>
+  <h1>Login</h1>
+
+  <div class="example-container">
+      <mat-form-field>
+        <input matInput type="text" formControlName="username" placeholder="username">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="text" formControlName="password" placeholder="password">
+      </mat-form-field>
+  </div>
+
+    <!-- *ngIf displays conditionally if true
+    the ? will only evalate the rest of the line if...
+    read up on toched and pristine/dirty -->
+    <div *ngIf="loginForm.controls.username.errors?.required && loginForm.controls.username.toched">
+      You must fill out your username
+    </div>
+
+    <!-- (click) like an eventListener 
+      you could create this if : [disabled]="loginForm.invalid", 
+      but it would be better to tell the user the error instead of removing the option
+    -->
+    <button mat-button type="submit">Login</button>
+
+    <!-- | pipe -->
+    <p>Form value: {{ loginForm.value | json }}</p>
+    <p>Form status: {{ loginForm.status | json }}</p>
+</form>

@@ -1,0 +1,55 @@
+<form [formGroup]="admitPieceForm" (submit)="pieceSubmit(admitPieceForm)" novalidate>
+  <h1>Admit Piece</h1>
+    <div class="example-container">
+        <mat-form-field>
+          <input matInput type="text" formControlName="title" placeholder="Title">
+        </mat-form-field>
+        <div *ngIf="admitPieceForm.controls.title.errors?.required && admitPieceForm.controls.title.touched">
+          You must fill out the title
+        </div>
+        <mat-form-field>
+          <input matInput type="text" formControlName="year" placeholder="Year">
+        </mat-form-field>
+        <div *ngIf="admitPieceForm.controls.year.errors?.required && admitPieceForm.controls.year.touched">
+          You must fill out the year
+        </div>
+        <mat-form-field>
+          <input matInput type="text" formControlName="media" placeholder="Media">
+        </mat-form-field>
+        <div *ngIf="admitPieceForm.controls.media.errors?.required && admitPieceForm.controls.media.touched">
+          You must fill out media
+        </div>
+        <mat-form-field>
+          <input matInput type="text" formControlName="material" placeholder="Material">
+        </mat-form-field>
+        <div *ngIf="admitPieceForm.controls.material.errors?.required && admitPieceForm.controls.material.touched">
+          You must fill out material
+        </div>
+        <mat-form-field>
+          <input matInput type="text" formControlName="description" placeholder="Description...">
+        </mat-form-field>
+        <div *ngIf="admitPieceForm.controls.description.errors?.required && admitPieceForm.controls.description.touched">
+          You must fill out the description
+        </div>
+        <mat-form-field>
+          <input matInput type="text" formControlName="size" placeholder="Size">
+        </mat-form-field>
+        <div *ngIf="admitPieceForm.controls.size.errors?.required && admitPieceForm.controls.size.touched">
+          You must fill out the size
+        </div>
+        <mat-form-field>
+          <input matInput type="text" formControlName="price" placeholder="Price">
+        </mat-form-field>
+        <div *ngIf="admitPieceForm.controls.price.errors?.required && admitPieceForm.controls.price.touched">
+          You must fill out the price
+        </div>
+        <input type='file' (change)="readUrl($event)">
+        <img [src]="profileImageUrl">
+    </div>
+  
+  <button mat-button type="submit">Admit Piece</button>
+
+    <p>Form value: {{ admitPieceForm.value | json }}</p>
+    <p>Form status: {{ admitPieceForm.status | json }}</p>
+
+</form>

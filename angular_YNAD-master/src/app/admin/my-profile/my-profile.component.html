@@ -1,3 +1,33 @@
-<p>
-  my-profile works!
-</p>
+
+<section class="admin-my-profile">
+  <div class="front-artist">
+      <div class="divWhiteBox">
+          <div class="front-artist-intro">
+              <div class="front-artist-info">
+                  <h1>{{user.firstname}} {{user.lastname}}</h1>
+                  <h2>{{user.profession}} - Copenhagen, Denmark</h2>
+                  <p>{{user.description}}</p>
+              </div>
+              <div class="front-artist-images"></div>
+          </div>
+          <div class="user-social">
+                <a href="{{user.facebook_url}}"><img src="/assets/icon/facebook.svg" alt="facebook"></a>
+                <a href="{{user.twitter_url}}"><img src="/assets/icon/instagram.svg" alt="instagram"></a>
+                <a href="{{user.instagram_url}}"><img src="/assets/icon/twitter.svg" alt="twitter"></a>
+          </div>
+          <div class="user-info">
+              <div class="user-email-phone">
+                  <div class="user-email">
+                      <img src="/assets/icon/email.svg" alt="email">
+                      <a class="p" href="mailto:{{user.email}}">minerva@gmail.com</a>
+                  </div>
+                  <div class="user-phone">
+                      <img src="/assets/icon/phone.svg" alt="phone">
+                      <a class="p" href="tel:{{user.phone_number}}">+45 93845259</a>
+                  </div>
+              </div>
+              <button href="/admin-edit-profile" class="btnLight">Edit Profile</button>
+          </div>
+      </div>
+  </div>
+</section>

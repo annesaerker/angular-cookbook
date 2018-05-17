@@ -1,99 +1,102 @@
+//require from my package.json
 var mysql = require('mysql')
 var express = require('express')
 var app = express()
+var formidable = require('express-formidable')
+app.use(formidable())
 var bodyParser = require('body-parser')
-// var express// formidable
 
-
+//create a connection to mysql
 var db = mysql.createConnection({
-    host:"localhost",
-    user:"admin",
-    password:"password",
-    database:"dbynad",
-    port:8889
+    host: "localhost", 
+    user: "admin",
+    password: "password",
+    database: "dbynad",
+    port: 8889
 })
 
-db.connect( err => {
-    if(err){console.log('ERROR'); process.exit()}
-    console.log('CONNECTED')
+//connect to my dbynad database 
+db.connect(err => {
+    if(err){
+        console.log('Error'); process.exit()
+    }
+    console.log('Connected');
 })
 
-// var stmt = "SELECT * FROM users"
-
-// db.query( stmt , ( err , ajData ) =>{
-//     console.log("ajData", ajData)
+// //use the post method to get the sign-up data (a form always posts)
+// app.post("/save-new-user", function(req, res) {
+//     console.log(req);
+//     res.send('ok')
 // })
 
-var messages = [{text:'Whats up?', owner: 'Katrin'},{text:'Not much!', owner: 'Birna'}];
-
-app.use(bodyParser.json());
-app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*")
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
-    next()
+//read/select from database all users
+db.query( 'SELECT * FROM users', (err, ajData ) =>{
+    console.log(ajData[0].firstname);
 })
 
-// create router with express that will let us seperate and orginaize our differnt routes
-// We will make one router for our general purpous web api routes and later another one for authentication specific routes
-// new router
-var api = express.Router();
+app.use(function (req, res, next) {
 
-api.get('/messages', (req, res) => {
-    // res.send('hello')
-    res.json(messages)
+    // Website you wish to allow to connect
+    res.setHeader('Access-Control-Allow-Origin', '*')
+  
+    // Request methods you wish to allow
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+  
+    // Request headers you wish to allow
+    res.setHeader('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers, x-access-token');
+  
+    // Set to true if you need the website to include cookies in the requests sent
+    // to the API (e.g. in case you use sessions)
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    // Pass to next layer of middleware
+    next() 
+  }); 
+
+app.get("/user-api", (req, res)=> {
+        // res.json([{id:1},{id:2}])
+    var stmt = 'SELECT * FROM users';
+    db.query(stmt, (err, ajData)=>{
+        console.log(ajData);
+        res.json(ajData);
+    });
 })
 
-api.post('/messages', (req, res) => {
-    // res.send('hello')
-    // console.log(req.body)
-    // res.json(messages)
-
-    // push message to body in service chat c
-    messages.push(req.body)
-    // status ok
-    // res.sendStatus(200);
-    res.json(req.body);
+app.get("/pieces-api", (req, res)=> {
+    // res.json([{id:1},{id:2}])
+    var stmt = 'SELECT * FROM pieces';
+    db.query(stmt, (err, ajData)=>{
+        console.log(ajData);
+        res.json(ajData);
+    });
 })
 
-// tell express to use our new router
-// creates base route for the first property. 
-//So in order to acces our routes now, we have to start with /api/...
-app.use('/api', api)
 
 
 
-
-
-// app.post("/save-user", (req, res) => { 
-//     console.log(req.fields)
-// }
-
-// //Insert user into database
-// var jUser = 
-// {
-//     "firstname": 'Mai',
-//     "lastname": 'Saerker',
-//     "profession": 'Web',
-//     "description": 'I do web',
-//     "email": 'a@s.com',
-//     "password": '1234',
-//     "profile_image": 'img.jpg',
-//     "phone_number": '004527520067',
-//     "instagram_url": 'https://www.instagram.com/annesaerker/',
-//     "facebook_url": 'https://www.facebook.com/annesaerker',
-//     "twitter_url": null,
+// //Insert a user into database
+// var jUser = {
+//     "firstname": 'Anne Mai',
+//     "lastname": 'Særker-Sørensen',
+//     "profession": 'Web Developer',
+//     "description": 'My name is Anne Mai and love the web',
+//     "password": '123',
+//     "profile_image": 'https://scontent-arn2-1.xx.fbcdn.net/v/t1.0-1/c0.5.320.320/p320x320/18156901_10156189333629698_7999203246869048154_n.jpg?_nc_cat=0&oh=ea6744a58f846b3752644e176ea9c35a&oe=5B5F9343',
+//     "facebook_url": null,
+//     "twitter_url": 'https://www.linkedin.com/in/thorkelsdottir/',
+//     "phone_number": '004593845257',
+//     "instagram_url": 'https://www.instagram.com/katrinduasig/',
 //     "roles_idroles": 1,
-//     "location_idlocation": 1,
-//     "thread_idthread": null } 
-
+//     "location_idlocation": 2,
+//     "thread_idthread": null
+// }
 // var stmt = 'INSERT INTO users SET ?'
 // db.query(stmt, jUser, (err, jData)=>{
 //     console.log("uData",jData);
 //     if(jData.affectedRows == 1){
 //         console.log('great, JSON user inserted');
 //     }
-//     //uData {"fieldCount":0,"affectedRows":1,"insertId":7,"serverStatus":2,"warningCount":0,"message":"","protocol41":true,"changedRows":0}
 // })
+
 
 //Listening to port
 var port = 1982

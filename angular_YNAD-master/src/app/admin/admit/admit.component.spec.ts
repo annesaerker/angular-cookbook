@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AdmitPieceComponent } from './admit-piece.component';
+import { AdmitComponent } from './admit.component';
 
-describe('AdmitPieceComponent', () => {
-  let component: AdmitPieceComponent;
-  let fixture: ComponentFixture<AdmitPieceComponent>;
+describe('AdmitComponent', () => {
+  let component: AdmitComponent;
+  let fixture: ComponentFixture<AdmitComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AdmitPieceComponent ]
+      declarations: [ AdmitComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AdmitPieceComponent);
+    fixture = TestBed.createComponent(AdmitComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

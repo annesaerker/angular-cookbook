@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { AuthService } from '../auth.service';
+import { PasswordValidator } from '../PasswordValidator';
 
 @Component({
   selector: 'app-sign-up',
@@ -9,9 +10,11 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./sign-up.component.scss']
 })
 export class SignUpComponent implements OnInit {
-  url: any;
-  private registerForm: FormGroup;
-  profileImageUrl = "http://placehold.it/180"
+  signUpForm: FormGroup;
+  profileImageUrl = "/assets/icon/imagePlaceholder.jpg";
+
+  constructor(private fb: FormBuilder, private router: Router, private authService: AuthService) {
+  };
 
   readUrl(event:any) {
     if (event.target.files && event.target.files[0]) {
@@ -21,51 +24,43 @@ export class SignUpComponent implements OnInit {
       }
       reader.readAsDataURL(event.target.files[0]);
     }
-  }
+  }s
 
-  constructor(private fb: FormBuilder, private router: Router, private authService: AuthService) { }
-
-  signUpSubmit(registerForm) {
-    console.log("is Valid?: " + registerForm.valid);
-
-    if (registerForm.valid) {
+  signUpSubmit(signUpForm) {
+    console.log("is Valid?: " + signUpForm.valid);
+    if (signUpForm.valid) {
+      //Save user data via userServiceService      
+      // this.userService.saveNewUser(signUpForm.value)
       // Send an http request to login
-      // This wont work - let x = this.authService.login();
-      
       // Navigate to the home page (or some other page)
       this.authService.login().subscribe(x => {
         // Can you naviate to the path the user tried to go to instead of 
         // always the contact?
-        this.router.navigate(['./admin/my-profile']);
+        this.router.navigate(['admin']);
       });
-      
+      //console.log(this.signUpForm.value);
     } else {
       // Display error messages.
     }
-    
+    console.log("Hi there!");
    }
 
   ngOnInit() {
-    this.registerForm = this.fb.group({
-      firstname: ['', Validators.required],
-      lastname: ['', Validators.required],
+    this.signUpForm = this.fb.group({
+      firstname: [''],
+      lastname: [''],
+      phone_number: [''],
       email: ['', Validators.required],
       password: ['', Validators.required],
-      country: ['', Validators.required],
-      phonenumber: ['', Validators.required],
-      facebookurl: ['', ],
-      instagramurl: ['', ],
-      twitterurl: ['', ],
-      profession: ['', Validators.required],
-      description: ['', Validators.required]
-
+      location: [''],
+      profession: [''],
+      description: [''],
+      facebook_url: [''],
+      instagram_url: [''],
+      twitter_url: [''],
+      profileimage: ['']
     });
   }
 
 }
-
-
-
-
-
 

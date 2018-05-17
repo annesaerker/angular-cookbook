@@ -1,71 +1,75 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {MatButtonModule, MatCheckboxModule, MatInputModule} from '@angular/material';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatFormFieldModule} from '@angular/material/form-field';
+
+//INPUT FORM
+import {MatInputModule} from '@angular/material/input';
+//Material
+import {MatButtonModule, MatCheckboxModule, MatSelectModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatSelectModule} from '@angular/material/select';
-import { HttpModule } from '@angular/http';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { LogInComponent } from './log-in/log-in.component';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import {MatCardModule} from '@angular/material/card';
 
-
-import { AppRoutingModule } from './app-routing.module';
-
-import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
+//AuthService
+import { AuthService } from './auth.service';
+import { AuthGuardService } from './auth-guard.service';
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { CreativesComponent } from './creatives/creatives.component';
+import { PiecesComponent } from './pieces/pieces.component';
+import { AboutComponent } from './about/about.component';
 import { AdminComponent } from './admin/admin.component';
 import { MyProfileComponent } from './admin/my-profile/my-profile.component';
-import { AuthGuardService } from './auth-guard.service';
-import { AuthService } from './auth.service';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { PiecesComponent } from './pieces/pieces.component';
-import { CreativesComponent } from './creatives/creatives.component';
-import { AboutComponent } from './about/about.component';
 import { MyPiecesComponent } from './admin/my-pieces/my-pieces.component';
-import { AdmitPieceComponent } from './admin/admit-piece/admit-piece.component';
-import { SignOutComponent } from './admin/sign-out/sign-out.component';
-import { ServiceChatComponent } from './admin/service-chat/service-chat.component';
-import { SignUpComponent } from './sign-up/sign-up.component';
-import { ChatService } from './chat.service';
+import { AdmitComponent } from './admin/admit/admit.component';
+import { HttpClientModule, HttpHeaders } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
-
-
+import { HttpModule } from '@angular/http';
+import { UserServiceService } from './user-service.service';
+import { PiecesService } from './pieces.service';
+import { EditPieceComponent } from './edit-piece/edit-piece.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    AdminComponent,
-    MyProfileComponent,
     PiecesComponent,
     CreativesComponent,
     AboutComponent,
-    MyPiecesComponent,
-    AdmitPieceComponent,
-    SignOutComponent,
-    ServiceChatComponent,
+    LogInComponent,
     SignUpComponent,
+    AdminComponent,
+    MyProfileComponent,
+    MyPiecesComponent,
+    AdmitComponent,
     HomeComponent,
-    FooterComponent
-  ],
+    FooterComponent,
+    EditPieceComponent
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    MatInputModule,
+    BrowserAnimationsModule, 
     MatButtonModule, 
-    MatCheckboxModule, 
-    MatToolbarModule, 
-    MatFormFieldModule, 
-    MatInputModule, 
-    BrowserAnimationsModule,
-    ReactiveFormsModule,
+    MatCheckboxModule,
+    MatToolbarModule,
+    MatMenuModule,
+    MatFormFieldModule,
     FormsModule,
+    ReactiveFormsModule,
     MatSelectModule,
+    HttpClientModule,
     HttpModule,
-    MatCardModule
+    MatCardModule  
   ],
-  providers: [AuthGuardService, AuthService, ChatService],
+  providers: [AuthGuardService, AuthService, UserServiceService, PiecesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+

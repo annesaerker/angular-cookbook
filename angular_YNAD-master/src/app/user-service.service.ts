@@ -9,9 +9,7 @@ export class UserServiceService {
   constructor(private http: HttpClient) { }
 
   displayAllUsers(): Observable<any> {
-    return this.http.get('http://localhost:1982/user-api', { responseType: 'json' } ).map(res => res);
+    return this.http.get('http://localhost:1983/user-api', { responseType: 'json' } );
   } 
-
-
 
 }

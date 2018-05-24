@@ -1,64 +1,35 @@
 import { Injectable } from '@angular/core';
-import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
+import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 import 'rxjs/add/operator/map';
+import { RequestOptions } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class CrudService {
 
-  // result: any;
   constructor(private http: HttpClient) { }
 
-  createPiece(name, price) {
-    const uri = 'http://localhost:1982/create-piece-api';
-    const obj = {
-      name: name,
-      price: price
-    };
-    this
-      .http
-      .post(uri, obj)
-      .subscribe(res =>
-          console.log('Done'));
+  saveNewUser(user) {
+    const url ='http://localhost:1983/save-user';
+    return this.http.post(url, user, { responseType: 'json' } ).subscribe();
   }
 
-  editPiece(id) {
-    const uri = 'http://localhost:1982/edit-piece-api' + id;
-    return this
-            .http
-            .get(uri)
-            .map(res => {
-              return res;
-            });
+  editUser(newUserInfo) {
+    const url ='http://localhost:1983/update-user';
+    return this.http.post(url, newUserInfo, { responseType: 'json' } ).subscribe();
   }
-
-  updatePiece(name, price, id) {
-    const uri = 'http://localhost:1982/update-piece-api' + id;
-
-    const obj = {
-      name: name,
-      price: price
-    };
-    this
-      .http
-      .post(uri, obj)
-      .subscribe(res => console.log('Done'));
+ 
+4
+  saveNewPiece(piece) {
+    const url ='http://localhost:1983/save-piece';
+    return this.http.post(url, piece, { responseType: 'json' } ).subscribe();
   }
-
-  deletePiece(id) {
-    const uri = 'http://localhost:1982/delete-piece-api' + id;
-
-        return this
-            .http
-            .get(uri)
-            .map(res => {
-              return res;
-            });
+  
+  deletePiece(idpieces) {
+    // console.log("clicking delete piece");
+    const url ='http://localhost:1983/delete-from-api/' + idpieces;
+    return this.http.get(url);
   }
-
-
 
 }
-
-

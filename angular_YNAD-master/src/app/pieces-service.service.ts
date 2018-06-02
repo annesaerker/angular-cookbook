@@ -9,6 +9,7 @@ export class PiecesServiceService {
 
   constructor(private http: HttpClient) { }
 
+  // Redux
   static getInitialPieceState(): UsersState {
     return {
       piece: []

@@ -15,6 +15,7 @@ import { IAppState } from '../../../store/store';
   styleUrls: ['./delete-piece-modal.component.scss']
 })
 export class DeletePieceModalComponent {
+  //passing in all the pieces data from the parent component
   @Input() data: any;
   pieces = [];
   constructor(public dialog: MatDialog, private pieceservice: PiecesServiceService, private usersActions: UsersActions, private ngRedux: NgRedux<IAppState>) {}

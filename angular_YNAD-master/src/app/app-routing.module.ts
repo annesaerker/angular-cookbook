@@ -13,6 +13,7 @@ import { AdmitComponent } from './admin/admit/admit.component';
 import { HomeComponent } from './home/home.component';
 import { EditUserComponent } from './admin/my-profile/edit-user/edit-user.component';
 import { AllUsersComponent } from './admin/all-users/all-users.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 const routes: Routes = [
@@ -31,7 +32,8 @@ const routes: Routes = [
     { path: 'my-pieces', component: MyPiecesComponent},
     { path: 'admit', component: AdmitComponent},
     { path: 'all-users', component: AllUsersComponent},
-  ] }
+  ] },
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({

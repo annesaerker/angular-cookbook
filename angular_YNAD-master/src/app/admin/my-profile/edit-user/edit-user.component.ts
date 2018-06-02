@@ -18,17 +18,17 @@ export class EditUserComponent implements OnInit {
    editUser(editUserForm) {
     console.log("is Valid?: " + editUserForm.valid);
     if (editUserForm.valid) {
-      //Save user data via userServiceService      
+      //Save user data via crudService      
       this.crudService.editUser(editUserForm.value)
-      // Send an http request to login
-      // Navigate to the home page (or some other page)
+      // Navigate to the /admin/my-profile 
       this.router.navigate(['/admin/my-profile']);
       console.log(this.editUserForm.value);
     } else {
-      // Display error messages.
+      console.log("Error: edit user");
     }
    }
-
+  
+  
   ngOnInit() {
     this.editUserForm = this.fb.group({
       firstname: [''],
@@ -39,6 +39,7 @@ export class EditUserComponent implements OnInit {
     });
     // console.log(this.userdata);
     this.userservice.displayAllUsers().subscribe(data => {
+      // the user shown from the database
       this.user  = data[0];      
    });
   }

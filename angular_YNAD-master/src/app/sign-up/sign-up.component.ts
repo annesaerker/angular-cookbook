@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
-import { PasswordValidator } from '../PasswordValidator';
 import { CrudService } from '../crud.service';
 
 @Component({
@@ -10,6 +9,7 @@ import { CrudService } from '../crud.service';
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.scss']
 })
+
 export class SignUpComponent implements OnInit {
   signUpForm: FormGroup;
   profileImageUrl = "/assets/icon/imagePlaceholder.jpg";
@@ -30,21 +30,22 @@ export class SignUpComponent implements OnInit {
   signUpSubmit(signUpForm) {
     // console.log("is Valid?: " + signUpForm.valid);
     if (signUpForm.valid) {
-      //Save user data via userServiceService      
+      //Save user data via crudService      
       this.crudService.saveNewUser(signUpForm.value)
-      // Send an http request to login
-      // Navigate to the home page (or some other page)
+      // log new user in when signed up
       this.authService.login().subscribe(x => {
-        // Can you naviate to the path the user tried to go to instead of 
-        // always the contact?
-        this.router.navigate(['log-in']);
+        // Navigate to the Admin page when signed up
+        this.router.navigate(['admin']);
       });
       console.log(this.signUpForm.value);
     } else {
       // Display error messages.
+      console.log("Error: sign up");
     }
    }
 
+
+  // Declaring everything inside the form
   ngOnInit() {
     this.signUpForm = this.fb.group({
       firstname: ['', Validators.required],

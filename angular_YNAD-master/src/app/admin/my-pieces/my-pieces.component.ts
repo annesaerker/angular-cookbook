@@ -2,9 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { MyProfileComponent } from '../my-profile/my-profile.component';
 import { PiecesServiceService } from '../../pieces-service.service';
 import { CrudService } from '../../crud.service';
-import { SearchService } from '../../search.service';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { UsersActions } from '../../users.actions';
@@ -22,7 +19,7 @@ export class MyPiecesComponent implements OnInit {
 
   subscription: Subscription;
   pieces: any[];
-  constructor(private usersAction: UsersActions, private ngRedux: NgRedux<IAppState>, public dialog: MatDialog, private router: Router, private pieceservice: PiecesServiceService, private crudservice: CrudService, private searchService: SearchService, private modalService: NgbModal ) { }
+  constructor(private usersAction: UsersActions, private ngRedux: NgRedux<IAppState>, public dialog: MatDialog, private router: Router, private pieceservice: PiecesServiceService, private crudservice: CrudService ) { }
 
   ngOnInit() {
     this.usersAction.getAllPieces();

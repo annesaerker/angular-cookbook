@@ -37,8 +37,6 @@ import { DeletePieceModalComponent, ModalOverlay } from './admin/my-pieces/delet
 //Services
 import { AuthService } from './auth.service';
 import { AuthGuardService } from './auth-guard.service';
-import { UserServiceService } from './user-service.service';
-import { PiecesServiceService } from './pieces-service.service';
 import { CrudService } from './crud.service';
 
 //HTTP
@@ -106,8 +104,6 @@ import { FilterArrayPipe } from './admin/all-users/filter.pipe';
   providers: [
     AuthGuardService, 
     AuthService, 
-    UserServiceService, 
-    PiecesServiceService, 
     CrudService, 
     UsersActions,
     UsersEpic,

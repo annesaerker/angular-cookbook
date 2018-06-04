@@ -1,7 +1,6 @@
 import { Component, Inject, OnInit, Input } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material';
 import { CrudService } from '../../../crud.service';
-import { PiecesServiceService } from '../../../pieces-service.service';
 import { Subject } from 'rxjs/Subject';
 import { UsersActions } from '../../../users.actions';
 import { NgRedux } from '@angular-redux/store';
@@ -18,7 +17,7 @@ export class DeletePieceModalComponent {
   //passing in all the pieces data from the parent component
   @Input() data: any;
   pieces = [];
-  constructor(public dialog: MatDialog, private pieceservice: PiecesServiceService, private usersActions: UsersActions, private ngRedux: NgRedux<IAppState>) {}
+  constructor(public dialog: MatDialog, private usersActions: UsersActions, private ngRedux: NgRedux<IAppState>) {}
 
   openDialog(data): void {
     // console.log('x');

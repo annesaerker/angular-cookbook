@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 import 'rxjs/add/operator/map';
 import { RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import { UsersState } from './store/store';
 
 // lets Angular know that a class can be used with the dependency injector
 @Injectable()
@@ -34,4 +35,21 @@ export class CrudService {
     return this.http.get(url);
   }
 
+  displayAllUsers(): Observable<any> {
+    return this.http.get('http://localhost:1983/user-api', { responseType: 'json' } );
+  } 
+
+    // Redux
+    static getInitialPieceState(): UsersState {
+      return {
+        piece: []
+      };
+    }
+    displayAllPieces(): Observable<any> {
+      // console.log("this is reading the displayAllPieces in piecesServiceService");
+      return this.http.get('http://localhost:1983/pieces-api', { responseType: 'json' } );
+    } 
+
 }
+
+

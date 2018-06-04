@@ -4,7 +4,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class FilterArrayPipe implements PipeTransform {
     transform(value: any, args?: any): any {
         //value is what you get out of the search
-        //arg is there is something put in the input 
+        //arg is what there is something put in the input 
 
         // checks if there is nothing in the search input
         if(!args){

@@ -1,5 +1,6 @@
 import { Component, OnInit, Injectable, Pipe, PipeTransform } from '@angular/core';
-import { UserServiceService } from '../../user-service.service';
+// import { UserServiceService } from '../../user-service.service';
+import { CrudService } from '../../crud.service';
 
 @Component({
   selector: 'app-all-users',
@@ -12,7 +13,7 @@ import { UserServiceService } from '../../user-service.service';
 export class AllUsersComponent implements OnInit {
   users = [];
 
-  constructor(private usersService: UserServiceService) {};
+  constructor(private usersService: CrudService) {};
 
   ngOnInit() {
     this.usersService.displayAllUsers().subscribe(data => {
